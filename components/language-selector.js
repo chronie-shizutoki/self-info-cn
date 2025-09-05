@@ -86,7 +86,7 @@ class LanguageSelector {
         popup.style.position = 'fixed';
         popup.style.top = '70px';
         popup.style.right = '20px';
-        popup.style.width = '500px';
+        popup.style.width = '200px';
         popup.style.maxWidth = '90vw';
         popup.style.maxHeight = '80vh'; // Limit height for mobile devices
         popup.style.padding = '20px';
@@ -123,9 +123,8 @@ class LanguageSelector {
             languageItem.style.color = '#ffffff';
             languageItem.style.textDecoration = 'none';
             languageItem.style.transition = 'all 0.3s ease';
-            languageItem.style.whiteSpace = 'nowrap';
-            languageItem.style.overflow = 'hidden';
-            languageItem.style.textOverflow = 'ellipsis';
+            languageItem.style.whiteSpace = 'normal';
+            languageItem.style.overflow = 'visible';
             
             // Add hover effect for desktop
             languageItem.addEventListener('mouseenter', () => {
