@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="components/style.css">
     <link rel="stylesheet" href="components/liquid-glass-block.css">
     <link rel="stylesheet" href="components/birthday.css">
-    <link rel="stylesheet" href="components/china-special-version.css">
 </head>
     <div id="loading-screen" class="splash-screen hidden">
         <div class="splash-content-girl">
@@ -16,6 +15,50 @@
             <p class="splash-text">少女祈祷中…</p>
         </div>
     </div>
+
+    <div style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 80%;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 24px 32px;
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 1.6;
+        z-index: 1000;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        animation: fadeIn 0.5s ease-out;
+    ">
+        <style>
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translate(-50%, -45%); }
+                to { opacity: 1; transform: translate(-50%, -50%); }
+            }
+            @media (max-width: 768px) {
+                div[style*="font-size: 16px"] {
+                    font-size: 14px !important;
+                    padding: 16px 20px !important;
+                }
+            }
+        </style>
+        <p>您当前访问的是自介网站为中国大陆用户提供的特别版本，该版本遵循相关法律法规要求。</p>
+        <p>You are currently accessing the special version of our website provided for users in mainland China in compliance with the relevant laws and regulations.</p>
+        <p>根据要求，此版本不会收集、传输或分析您的任何数据，请放心使用。</p>
+        <p>As required, this version does not collect, transmit, or analyze any of your data. Please use it with confidence.</p>
+        <p>如果您的地理位置位于中国大陆，请使用此版本。国际版网站（提供多语言服务）暂不适用于中国大陆用户。</p>
+        <p>If you are located in mainland China, please use this version. The international website (which offers multi-language services) is currently not available for users within mainland China.</p>
+    </div>
+
+<div style="padding-top: 100vh;"></div>
 
     <canvas id="sakura-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
     <div class="header" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
@@ -119,6 +162,5 @@
     <script src="components/birthday.js"></script>
     <script src="components/splash-screen.js"></script>
     <script type="module" src="anime/sakura.js"></script>
-    <script src="components/china-special-version.js"></script>
 </body>
 </html>
