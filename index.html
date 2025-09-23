@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="components/style.css">
     <link rel="stylesheet" href="components/liquid-glass-block.css">
     <link rel="stylesheet" href="components/birthday.css">
+    <link rel="stylesheet" href="components/posts.css">
 </head>
     <div id="loading-screen" class="splash-screen hidden">
         <div class="splash-content-girl">
@@ -135,6 +136,20 @@
         <p><span class="info-text">(๑˃ᴗ˂)ﻭ ✧ </span></p>
         </div>
     </div>
+    <!-- 引入贴文功能 -->
+    <div id="posts-section">
+        <div class="section">
+            <div class="glass-container-apple">
+                <h3 class="section-title">📝 我的贴文</h3>
+                <div id="posts-container">
+                    <!-- 贴文内容将通过 JavaScript 动态加载 -->
+                    <div style="text-align: center; padding: 20px;">
+                        <p class="info-text">正在加载贴文...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div style="bottom: 10px; left: 50%; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: #ffffff; font-weight: 500; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.2);">
         当前区域暂不支持多语言切换
@@ -177,6 +192,7 @@
     </style>
     <script src="components/birthday.js"></script>
     <script src="components/splash-screen.js"></script>
+    <script src="components/posts.js"></script>
     <script type="module" src="anime/sakura.js"></script>
 </body>
 </html>
