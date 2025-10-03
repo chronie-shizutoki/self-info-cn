@@ -17,6 +17,27 @@
         </div>
     </div>
 
+    <div style="text-align: center; padding: 10px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 5px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); color: rgb(255, 255, 255); font-weight: 500; position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 100; font-size:smaller; max-width: 70%; max-height: calc(2 * 1.5em); overflow: hidden;">
+        <div style="animation: scroll-up 20s linear infinite; height: fit-content;">
+            <p>...</p>
+            <p>This site supports multiple languages. Switch languages via the right-side button. AI translations may be inaccurate.</p>
+            <p>本網站已支援多語言，可點擊右側按鈕切換。AI翻譯可能存在不準確之處。</p>
+            <p>本サイトは多言語対応です。右側のボタンで言語を切り替えられます。AI翻訳は正確でない場合があります。</p>
+            <p>본 사이트는 다국어를 지원합니다. 오른쪽 버튼으로 언어를 전환하세요. AI 번역은 부정확할 수 있습니다.</p>
+            <p>...</p>
+        </div>
+    </div>
+    <style>
+        @keyframes scroll-up {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(calc(-100% + 2 * 1.5em));
+            }
+        }
+    </style>
+
     <canvas id="sakura-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
     <div class="header" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
         <div class="glass-container-apple" id="header-content">
