@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自介 (简体中文，中国大陆)</title>
+    <title>自介 (多语言Beta，中国大陆)</title>
     <link rel="stylesheet" href="components/splash-screen.css">
     <link rel="stylesheet" href="components/style.css">
     <link rel="stylesheet" href="components/liquid-glass-block.css">
     <link rel="stylesheet" href="components/birthday.css">
+    <script src="components/i18n.js" defer></script>
 </head>
     <div id="loading-screen" class="splash-screen hidden">
         <div class="splash-content-girl">
             <div class="loader"></div>
-            <p class="splash-text">少女祈祷中…</p>
+            <p class="splash-text" id="loading-text">少女祈祷中…</p>
         </div>
     </div>
 
     <canvas id="sakura-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
     <div class="header" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-        <div class="glass-container-apple">
+        <div class="glass-container-apple" id="header-content">
             <p class="info-text">你好呀，初次见面～ (◕‿◕✿)</p>
             <p><span class="info-text">可以叫我 </span><strong class="highlight">静時猫猫糖（しずときねこたん shizutoki nekotan）</strong></p>
             <p><span class="info-text">或者像星星一样闪亮的名字 </span><strong class="highlight">Chronie</strong><span class="info-text"> 也可以哦！✨ </span></p>
@@ -27,12 +28,12 @@
 <br>
     <div class="section">
         <div class="glass-container-apple">
-        <h3 class="section-title">🎂 诞生小秘密</h3>
+        <h3 class="section-title" id="section1-title">🎂 诞生小秘密</h3>
         <div class="compact-countdown" id="countdown">
             <span class="cake-icon">🎂</span>
             <span class="birthday-today">今天、就是生日哦！(＊´∀｀*)ﾉ</span>
         </div>
-        <ul>
+        <ul id="section1-list">
             <li><span class="info-text">在</span><strong class="highlight">处女座</strong><strong class="highlight ql-size-5">魔法绽放的第一天</strong><span class="info-text">降临世间～</span></li>
             <li><span class="info-text">（</span><strong class="highlight">农历七月十一</strong><span class="info-text">的月光是我的摇篮曲哟！🌙） </span></li>
         </ul>
@@ -41,8 +42,8 @@
 
     <div class="section">
         <div class="glass-container-apple">
-        <h3 class="section-title">🗣️语言小口袋</h3>
-        <ul>
+        <h3 class="section-title" id="section2-title">🗣️语言小口袋</h3>
+        <ul id="section2-list">
             <li><strong style="color: #d5ffbf;">日语、英语、简体中文、繁体中文</strong><span class="info-text">都可以哦～</span></li>
             <li><span class="info-text">（切换语言就像换小帽子一样有趣呢！(◕‿◕✿)） </span></li>
         </ul>
@@ -51,8 +52,8 @@
 
     <div class="section">
         <div class="glass-container-apple">
-        <h3 class="section-title">🌈 ACGN 能量体</h3>
-        <ul>
+        <h3 class="section-title" id="section3-title">🌈 ACGN 能量体</h3>
+        <ul id="section3-list">
             <li><span class="info-text">没错！</span></li>
             <li><span class="info-text">动漫、漫画、游戏、小说是构成小宇宙的基本粒子～★~(◠‿◕✿) </span></li>
         </ul>
@@ -61,8 +62,8 @@
 
     <div class="section">
         <div class="glass-container-apple">
-        <h3 class="section-title">💖 心灵小拼图 (INFJ-T 版)</h3>
-        <ul>
+        <h3 class="section-title" id="section4-title">💖 心灵小拼图 (INFJ-T 版)</h3>
+        <ul id="section4-list">
             <li><span class="info-text">  </span><span class="highlight">充电能量站： </span><span class="info-text">83%需要安静的独处时光</span><strong style="color: #ffeebf;">（躲在小被窝里看书最幸福啦～(｡>ㅅ<｡)）</strong></li>
             <li><span class="info-text">  </span><span class="highlight">脑内小剧场：</span><span class="info-text"> 74%天马行空ing</span><strong style="color: #ffeebf;">（幻想世界的大门永远敞开！🚪✨） </strong></li>
             <li><span class="info-text">  </span><span class="highlight">感受力天线： </span><span class="info-text">82%超敏感接收中</span><strong style="color: #ffeebf;">（小情绪也许能悄悄感应到哦 (｡･ω･｡)） </strong></li>
@@ -74,18 +75,18 @@
 
     <div class="section">
         <div class="glass-container-apple">
-        <h3 class="section-title">🍀 幸运小雷达</h3>
-        <p><span class="info-text">信号微弱中……（</span><strong class="highlight">捡到四叶草会开心一整天！</strong><span class="info-text">(⁄ ⁄•⁄ω⁄•⁄ ⁄)）</span></p>
+        <h3 class="section-title" id="section5-title">🍀 幸运小雷达</h3>
+        <p id="section5-content"><span class="info-text">信号微弱中……（</span><strong class="highlight">捡到四叶草会开心一整天！</strong><span class="info-text">(⁄ ⁄•⁄ω⁄•⁄ ⁄)）</span></p>
         </div>
     </div>
 
     <div class="section">
         <div class="glass-container-apple">
-        <h3 class="section-title">🎮 游戏小星球</h3>
-        <p><span class="info-text">目前只绕着</span><strong class="highlight">《原神》</strong><span class="info-text">和</span><strong class="highlight">《崩坏：星穹铁道》</strong><span class="info-text">转圈圈～☆ﾐ(o･ω･)ﾉ）</span></p>
+        <h3 class="section-title" id="section6-title">🎮 游戏小星球</h3>
+        <p id="section6-content"><span class="info-text">目前只绕着</span><strong class="highlight">《原神》</strong><span class="info-text">和</span><strong class="highlight">《崩坏：星穹铁道》</strong><span class="info-text">转圈圈～☆ﾐ(o･ω･)ﾉ）</span></p>
         </div>
         <br>
-        <div class="glass-container-apple" style="text-align: center;">
+        <div class="glass-container-apple" style="text-align: center;" id="farewell-section">
         <p><span class="info-text">请多关照～ </span></p>
         <p><span class="info-text">希望和你成为好朋友！一起分享快乐的小宇宙吧～ (ฅ^•ﻌ•^ฅ) ♡ </span></p>
         <p><span class="info-text">(๑˃ᴗ˂)ﻭ ✧ </span></p>
@@ -93,24 +94,30 @@
     </div>
 
     <div style="bottom: 10px; left: 50%; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: #ffffff; font-weight: 500; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.2);">
-        当前区域暂不支持多语言切换
+        当前多语言文本由AI提供，可能存在问题。
         <br>
-        Multi-language switching is currently not supported in this area
+        当前多語言文本由AI提供，可能存在問題。
+        <br>
+        The current multilingual text is provided by AI and may have issues.
+        <br>
+        現在の多言語テキストはAIによって提供されており、問題がある可能性があります。
+        <br>
+        현재 다국어 텍스트는 AI가 제공하며 문제가 있을 수 있습니다.
     </div>
 
-    <div style="text-align: center; padding: 20px 0 10px; font-size: 12px; color: white; opacity: 0.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+    <div style="text-align: center; padding: 20px 0 10px; font-size: 12px; color: white; opacity: 0.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);" id="footer-info">
         近月少女的礼仪  樱小路露娜
         <br>
         Bilibili | BV1fw8Bz8Eqy | opus/1095733813253767185
     </div>
 
         <div style="position: fixed; bottom: 10px; transform: translateX(-50%); z-index: 1000;">
-        <a href="https://wj.qq.com/s2/23989997/e6a3/" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;">
+        <a href="https://wj.qq.com/s2/23989997/e6a3/" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: white; font-weight: 500; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease;" id="feedback-link">
             📝 反馈
         </a>
     </div>
 
-    <div style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: #ffcc80; font-weight: 500; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.2);">
+    <div style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background-color: rgba(255, 255, 255, 0.15); backdrop-filter: blur(5px); border-radius: 20px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); text-align: center; font-size: 14px; color: #ffcc80; font-weight: 500; z-index: 1000; border: 1px solid rgba(255, 255, 255, 0.2);" id="update-info">
         ✨ 更新于2025年10月3日 ✨ 
     </div>
     <style>
