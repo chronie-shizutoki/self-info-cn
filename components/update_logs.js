@@ -167,14 +167,61 @@ class UpdateLogsManager {
         // 创建模态框内容
         const modalContent = document.createElement('div');
         modalContent.style.cssText = `
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
-            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
             padding: 25px;
             max-width: 600px;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px) saturate(140%);
+            -webkit-backdrop-filter: blur(15px) saturate(140%);
+            box-shadow: 
+                inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+                0 8px 32px rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(255, 255, 255, 0.08);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        `;
+        
+        // 添加液态玻璃效果的光晕层
+        const glowLayer = document.createElement('div');
+        glowLayer.style.cssText = `
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 25% 25%, 
+                rgba(100, 150, 255, 0.25), 
+                rgba(255, 200, 220, 0.15), 
+                transparent 40%);
+            transform-origin: center center;
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 0;
+        `;
+        modalContent.appendChild(glowLayer);
+        
+        // 添加材质噪点层
+        const noiseLayer = document.createElement('div');
+        noiseLayer.style.cssText = `
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            opacity: 0.8;
+            z-index: 0;
+        `;
+        modalContent.appendChild(noiseLayer);
+        
+        // 创建内容容器，确保内容在图层之上
+        const contentContainer = document.createElement('div');
+        contentContainer.style.cssText = `
+            position: relative;
+            z-index: 1;
         `;
         
         // 获取多语言文本
@@ -185,7 +232,7 @@ class UpdateLogsManager {
         const title = document.createElement('h2');
         title.textContent = modalTitle;
         title.style.cssText = `
-            color: #333;
+            color: #fff;
             margin-top: 0;
             margin-bottom: 20px;
             text-align: center;
@@ -267,10 +314,11 @@ class UpdateLogsManager {
             }
         });
         
-        // 组装模态框
-        modalContent.appendChild(title);
-        modalContent.appendChild(logsContainer);
-        modalContent.appendChild(closeButton);
+        // 组装模态框内容到内容容器中
+        contentContainer.appendChild(title);
+        contentContainer.appendChild(logsContainer);
+        contentContainer.appendChild(closeButton);
+        modalContent.appendChild(contentContainer);
         modal.appendChild(modalContent);
         
         // 点击模态框外部关闭
