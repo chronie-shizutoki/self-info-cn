@@ -168,12 +168,12 @@ class UpdateLogsManager {
         const modalContent = document.createElement('div');
         modalContent.style.cssText = `
             position: relative;
-            overflow: hidden;
             border-radius: 24px;
             padding: 25px;
             max-width: 600px;
             max-height: 80vh;
-            overflow-y: auto;
+            overflow-x: hidden; /* 禁止横向滚动 */
+            overflow-y: auto; /* 允许垂直滚动 */
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(15px) saturate(140%);
             -webkit-backdrop-filter: blur(15px) saturate(140%);
@@ -182,15 +182,53 @@ class UpdateLogsManager {
                 0 8px 32px rgba(0, 0, 0, 0.15),
                 0 0 0 1px rgba(255, 255, 255, 0.08);
             transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            /* 自定义滚动条 */
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.1);
+            /* 确保尺寸计算正确 */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
         `;
+        
+        // 创建一个唯一的ID用于样式选择器
+        const uniqueId = 'update-log-modal-' + Date.now();
+        modalContent.id = uniqueId;
+        
+        // 创建样式元素来添加Webkit滚动条样式
+        const style = document.createElement('style');
+        style.textContent = `
+            #${uniqueId}::-webkit-scrollbar {
+                width: 8px;
+            }
+            #${uniqueId}::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 4px;
+            }
+            #${uniqueId}::-webkit-scrollbar-thumb {
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 4px;
+            }
+            #${uniqueId}::-webkit-scrollbar-thumb:hover {
+                background: rgba(255, 255, 255, 0.5);
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 在模态框关闭时移除样式
+        modal.addEventListener('click', () => {
+            if (style.parentNode) {
+                style.parentNode.removeChild(style);
+            }
+        });
         
         // 添加液态玻璃效果的光晕层
         const glowLayer = document.createElement('div');
         glowLayer.style.cssText = `
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -50%;
+            left: -50%;
             width: 200%;
             height: 200%;
             background: radial-gradient(circle at 25% 25%, 
@@ -222,6 +260,9 @@ class UpdateLogsManager {
         contentContainer.style.cssText = `
             position: relative;
             z-index: 1;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
         `;
         
         // 获取多语言文本
@@ -237,11 +278,18 @@ class UpdateLogsManager {
             margin-bottom: 20px;
             text-align: center;
             font-size: 24px;
+            padding-right: 40px; /* 为右上角的关闭按钮留出空间 */
         `;
         
         // 创建日志列表
         const logsContainer = document.createElement('div');
-        logsContainer.style.marginBottom = '20px';
+        logsContainer.style.cssText = `
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        `;
         
         // 为每个日志条目创建显示内容
         this.logs.forEach((log, index) => {
@@ -288,21 +336,28 @@ class UpdateLogsManager {
             logsContainer.appendChild(logEntry);
         });
         
-        // 创建关闭按钮
+        // 创建关闭按钮并放置在右上角
         const closeButton = document.createElement('button');
-        closeButton.textContent = closeButtonText;
+        closeButton.textContent = '×';
         closeButton.style.cssText = `
-            background-color: #ff6b6b;
+            background-color: rgba(255, 107, 107, 0.8);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
+            padding: 8px 12px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 500;
-            display: block;
-            margin: 0 auto;
-            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 2;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
         `;
         
         // 使用更高效的事件处理
@@ -314,11 +369,11 @@ class UpdateLogsManager {
             }
         });
         
-        // 组装模态框内容到内容容器中
+        // 组装模态框内容
         contentContainer.appendChild(title);
         contentContainer.appendChild(logsContainer);
-        contentContainer.appendChild(closeButton);
         modalContent.appendChild(contentContainer);
+        modalContent.appendChild(closeButton); // 关闭按钮使用绝对定位，应添加到modalContent中
         modal.appendChild(modalContent);
         
         // 点击模态框外部关闭
