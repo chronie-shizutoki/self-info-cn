@@ -52,48 +52,115 @@ class I18nManager {
         selectorContainer.style.top = '10px';
         selectorContainer.style.right = '10px';
         selectorContainer.style.zIndex = '1000';
-        selectorContainer.style.display = 'flex';
-        selectorContainer.style.flexDirection = 'column';
-        selectorContainer.style.gap = '5px';
 
-        // 创建语言按钮
+        // 创建主按钮（显示当前语言）
+        const mainButton = document.createElement('button');
+        mainButton.id = 'language-main-button';
+        mainButton.textContent = this.languages[this.currentLanguage]?.language_name || this.currentLanguage;
+        mainButton.style.padding = '8px 16px';
+        mainButton.style.borderRadius = '15px';
+        mainButton.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+        mainButton.style.background = 'rgba(219, 166, 255, 0.7)';
+        mainButton.style.color = 'white';
+        mainButton.style.fontSize = '14px';
+        mainButton.style.cursor = 'pointer';
+        mainButton.style.transition = 'all 0.3s ease';
+        mainButton.style.backdropFilter = 'blur(5px)';
+        mainButton.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        mainButton.style.display = 'flex';
+        mainButton.style.alignItems = 'center';
+        mainButton.style.justifyContent = 'space-between';
+        mainButton.style.minWidth = '100px';
+
+        // 添加下拉箭头
+        const arrow = document.createElement('span');
+        arrow.textContent = ' ▼';
+        arrow.style.marginLeft = '5px';
+        mainButton.appendChild(arrow);
+
+        // 创建下拉菜单
+        const dropdownMenu = document.createElement('div');
+        dropdownMenu.id = 'language-dropdown-menu';
+        dropdownMenu.style.position = 'absolute';
+        dropdownMenu.style.top = '100%';
+        dropdownMenu.style.right = '0';
+        dropdownMenu.style.marginTop = '5px';
+        dropdownMenu.style.borderRadius = '15px';
+        dropdownMenu.style.border = '1px solid rgba(255, 255, 255, 0.3)';
+        dropdownMenu.style.background = 'rgba(255, 255, 255, 0.1)';
+        dropdownMenu.style.backdropFilter = 'blur(10px)';
+        dropdownMenu.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.15)';
+        dropdownMenu.style.display = 'none';
+        dropdownMenu.style.flexDirection = 'column';
+        dropdownMenu.style.minWidth = '100%';
+        dropdownMenu.style.maxHeight = '300px';
+        dropdownMenu.style.overflowY = 'auto';
+
+        // 创建语言选项
         this.supportedLanguages.forEach(langCode => {
-            const button = document.createElement('button');
-            button.dataset.lang = langCode;
-            button.textContent = this.languages[langCode]?.language_name || langCode;
-            button.style.padding = '5px 10px';
-            button.style.borderRadius = '15px';
-            button.style.border = '1px solid rgba(255, 255, 255, 0.3)';
-            button.style.background = langCode === this.currentLanguage 
-                ? 'rgba(219, 166, 255, 0.7)' 
-                : 'rgba(255, 255, 255, 0.2)';
-            button.style.color = 'white';
-            button.style.fontSize = '12px';
-            button.style.cursor = 'pointer';
-            button.style.transition = 'all 0.3s ease';
-            button.style.backdropFilter = 'blur(5px)';
-            button.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            if (langCode !== this.currentLanguage) { // 不显示当前选中的语言
+                const option = document.createElement('button');
+                option.dataset.lang = langCode;
+                option.textContent = this.languages[langCode]?.language_name || langCode;
+                option.style.padding = '8px 16px';
+                option.style.border = 'none';
+                option.style.background = 'transparent';
+                option.style.color = 'white';
+                option.style.fontSize = '14px';
+                option.style.cursor = 'pointer';
+                option.style.transition = 'all 0.3s ease';
+                option.style.textAlign = 'left';
+                option.style.width = '100%';
+                option.style.boxSizing = 'border-box';
 
-            button.addEventListener('mouseenter', () => {
-                button.style.background = langCode === this.currentLanguage 
-                    ? 'rgba(219, 166, 255, 0.9)' 
-                    : 'rgba(255, 255, 255, 0.3)';
-            });
+                // 为第一个和最后一个选项添加圆角
+                if (langCode === this.supportedLanguages[0]) {
+                    option.style.borderTopLeftRadius = '15px';
+                    option.style.borderTopRightRadius = '15px';
+                }
+                if (langCode === this.supportedLanguages[this.supportedLanguages.length - 1]) {
+                    option.style.borderBottomLeftRadius = '15px';
+                    option.style.borderBottomRightRadius = '15px';
+                }
 
-            button.addEventListener('mouseleave', () => {
-                button.style.background = langCode === this.currentLanguage 
-                    ? 'rgba(219, 166, 255, 0.7)' 
-                    : 'rgba(255, 255, 255, 0.2)';
-            });
+                option.addEventListener('mouseenter', () => {
+                    option.style.background = 'rgba(255, 255, 255, 0.2)';
+                });
 
-            button.addEventListener('click', () => {
-                this.changeLanguage(langCode);
-            });
+                option.addEventListener('mouseleave', () => {
+                    option.style.background = 'transparent';
+                });
 
-            selectorContainer.appendChild(button);
+                option.addEventListener('click', () => {
+                    this.changeLanguage(langCode);
+                    dropdownMenu.style.display = 'none';
+                });
+
+                dropdownMenu.appendChild(option);
+            }
         });
 
+        // 切换下拉菜单显示/隐藏
+        mainButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // 阻止冒泡，避免触发文档点击事件
+            dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'flex' : 'none';
+        });
+
+        // 添加到容器
+        selectorContainer.appendChild(mainButton);
+        selectorContainer.appendChild(dropdownMenu);
+
         document.body.appendChild(selectorContainer);
+
+        // 点击文档其他地方关闭菜单
+        document.addEventListener('click', () => {
+            dropdownMenu.style.display = 'none';
+        });
+
+        // 防止点击菜单内部时关闭菜单
+        dropdownMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
     }
 
     changeLanguage(langCode) {
@@ -108,13 +175,67 @@ class I18nManager {
     }
 
     updateLanguageSelector() {
-        const buttons = document.querySelectorAll('#language-selector button');
-        buttons.forEach(button => {
-            const langCode = button.dataset.lang;
-            button.style.background = langCode === this.currentLanguage 
-                ? 'rgba(219, 166, 255, 0.7)' 
-                : 'rgba(255, 255, 255, 0.2)';
-        });
+        // 更新主按钮文本
+        const mainButton = document.getElementById('language-main-button');
+        if (mainButton) {
+            mainButton.textContent = this.languages[this.currentLanguage]?.language_name || this.currentLanguage;
+            // 重新添加下拉箭头
+            const arrow = document.createElement('span');
+            arrow.textContent = ' ▼';
+            arrow.style.marginLeft = '5px';
+            mainButton.appendChild(arrow);
+        }
+
+        // 更新下拉菜单
+        const dropdownMenu = document.getElementById('language-dropdown-menu');
+        if (dropdownMenu) {
+            // 清空当前菜单
+            dropdownMenu.innerHTML = '';
+            
+            // 重新创建语言选项
+            this.supportedLanguages.forEach(langCode => {
+                if (langCode !== this.currentLanguage) { // 不显示当前选中的语言
+                    const option = document.createElement('button');
+                    option.dataset.lang = langCode;
+                    option.textContent = this.languages[langCode]?.language_name || langCode;
+                    option.style.padding = '8px 16px';
+                    option.style.border = 'none';
+                    option.style.background = 'transparent';
+                    option.style.color = 'white';
+                    option.style.fontSize = '14px';
+                    option.style.cursor = 'pointer';
+                    option.style.transition = 'all 0.3s ease';
+                    option.style.textAlign = 'left';
+                    option.style.width = '100%';
+                    option.style.boxSizing = 'border-box';
+
+                    // 为第一个和最后一个选项添加圆角
+                    if (langCode === this.supportedLanguages[0]) {
+                        option.style.borderTopLeftRadius = '15px';
+                        option.style.borderTopRightRadius = '15px';
+                    }
+                    if (langCode === this.supportedLanguages[this.supportedLanguages.length - 1]) {
+                        option.style.borderBottomLeftRadius = '15px';
+                        option.style.borderBottomRightRadius = '15px';
+                    }
+
+                    option.addEventListener('mouseenter', () => {
+                        option.style.background = 'rgba(255, 255, 255, 0.2)';
+                    });
+
+                    option.addEventListener('mouseleave', () => {
+                        option.style.background = 'transparent';
+                    });
+
+                    option.addEventListener('click', () => {
+                        this.changeLanguage(langCode);
+                        dropdownMenu.style.display = 'none';
+                    });
+
+                    dropdownMenu.appendChild(option);
+                }
+            });
+        }
     }
 
     translate(key) {
