@@ -26,6 +26,15 @@ class UpdateLogsManager {
             this.logs = data.logs || [];
             this.logs.sort((a, b) => new Date(b.date) - new Date(a.date)); // 按日期降序排列
             
+            // 保存翻译数据
+            this.translations = data.translations || {
+                'zh-CN': {},
+                'zh-TW': {},
+                'en': {},
+                'ja': {},
+                'ko': {}
+            };
+            
             // 监听语言切换事件
             this.setupLanguageListener();
             
@@ -69,6 +78,15 @@ class UpdateLogsManager {
         }
         this.updateTimeout = setTimeout(() => {
             this.updateLogDisplay();
+            
+            // 关闭已打开的日志模态框，以便下次打开时使用新的语言
+            const openModal = document.querySelector('[id^="update-log-modal-"]');
+            if (openModal && openModal.parentNode) {
+                const modal = openModal.closest('div[id^="update-log-modal-"]') || openModal.parentNode;
+                if (modal && document.body.contains(modal)) {
+                    document.body.removeChild(modal);
+                }
+            }
         }, 50);
     }
 
@@ -292,44 +310,59 @@ class UpdateLogsManager {
         `;
         
         // 为每个日志条目创建显示内容
-        this.logs.forEach((log, index) => {
-            const logEntry = document.createElement('div');
-            logEntry.style.cssText = `
-                margin-bottom: 25px;
-                padding-bottom: 20px;
-                ${index < this.logs.length - 1 ? 'border-bottom: 1px solid #eee;' : ''}
-            `;
-            
-            const logHeader = document.createElement('h3');
-            const formattedDate = this.formatDate(log.date);
-            
-            // 获取版本前缀的翻译
-            let versionPrefix = 'v';
-            if (window.i18n) {
-                versionPrefix = window.i18n.translate('version_prefix') || 'v';
-            }
-            
-            logHeader.textContent = `${formattedDate} (${versionPrefix}${log.version})`;
-            logHeader.style.cssText = `
-                color: #ff6b6b;
-                margin-top: 0;
-                margin-bottom: 10px;
-                font-size: 18px;
-            `;
-            
-            const changesList = document.createElement('ul');
-            changesList.style.cssText = `
-                color: #555;
-                margin: 0;
-                padding-left: 20px;
-            `;
-            
-            log.changes.forEach(change => {
-                const changeItem = document.createElement('li');
-                changeItem.textContent = change;
-                changeItem.style.marginBottom = '5px';
-                changesList.appendChild(changeItem);
-            });
+            this.logs.forEach((log, index) => {
+                const logEntry = document.createElement('div');
+                logEntry.style.cssText = `
+                    margin-bottom: 25px;
+                    padding-bottom: 20px;
+                    ${index < this.logs.length - 1 ? 'border-bottom: 1px solid #eee;' : ''}
+                `;
+                
+                const logHeader = document.createElement('h3');
+                const formattedDate = this.formatDate(log.date);
+                
+                // 获取版本前缀的翻译
+                let versionPrefix = 'v';
+                if (window.i18n) {
+                    versionPrefix = window.i18n.translate('version_prefix') || 'v';
+                }
+                
+                logHeader.textContent = `${formattedDate} (${versionPrefix}${log.version})`;
+                logHeader.style.cssText = `
+                    color: #ff6b6b;
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                `;
+                
+                const changesList = document.createElement('ul');
+                changesList.style.cssText = `
+                    color: #555;
+                    margin: 0;
+                    padding-left: 20px;
+                `;
+                
+                log.changes.forEach(change => {
+                    const changeItem = document.createElement('li');
+                    
+                    // 获取翻译后的内容
+                    let translatedChange = change;
+                    
+                    // 检查是否有翻译数据
+                    if (this.translations && window.i18n && window.i18n.currentLanguage) {
+                        const lang = window.i18n.currentLanguage;
+                        if (this.translations[lang] && this.translations[lang][change]) {
+                            translatedChange = this.translations[lang][change];
+                        } else if (this.translations['zh-CN'] && this.translations['zh-CN'][change]) {
+                            // 如果当前语言没有翻译，使用默认的中文翻译
+                            translatedChange = this.translations['zh-CN'][change];
+                        }
+                    }
+                    
+                    changeItem.textContent = translatedChange;
+                    changeItem.style.marginBottom = '5px';
+                    changesList.appendChild(changeItem);
+                });
             
             logEntry.appendChild(logHeader);
             logEntry.appendChild(changesList);
