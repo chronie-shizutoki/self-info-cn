@@ -67,10 +67,16 @@
     "footer1": "近月少女的礼仪  樱小路露娜",
     "footer2": "Bilibili | BV1fw8Bz8Eqy | opus/1095733813253767185",
     "feedback": "📝 反馈",
-    "update_info": "✨ 更新于2025年10月4日 ✨ ",
+    "update_info": "✨ 加载更新日志中... ✨ ",
     "loading_text": "少女祈祷中…",
     "page_title": "自介",
-    "language_name": "简体中文"
+    "language_name": "简体中文",
+    "update_logs_title": "📝 更新日志",
+    "close_button": "关闭",
+    "version_prefix": "v",
+    "update_log_prefix": "更新日志",
+    "no_update_logs": "暂无更新日志",
+    "update_log_load_failed": "加载更新日志失败"
   },
   "zh-TW": {
     "greeting": "你好呀，初次見面～ (◕‿◕✿)",
@@ -140,10 +146,16 @@
     "footer1": "近月少女的禮儀 櫻小路露娜",
     "footer2": "Bilibili | BV1fw8Bz8Eqy | opus/1095733813253767185",
     "feedback": "📝 意見回饋",
-    "update_info": "✨ 更新於 2025 年 10 月 4 日 ✨",
+    "update_info": "✨ 載入更新日誌中... ✨",
     "loading_text": "少女祈禱中…",
     "page_title": "個人介紹",
-    "language_name": "繁體中文"
+    "language_name": "繁體中文",
+    "update_logs_title": "📝 更新日誌",
+    "close_button": "關閉",
+    "version_prefix": "v",
+    "update_log_prefix": "更新日誌",
+    "no_update_logs": "暫無更新日誌",
+    "update_log_load_failed": "更新日誌載入失敗"
   },
   "en": {
     "greeting": "Hi there, nice to meet you! (◕‿◕✿)",
@@ -213,10 +225,16 @@
     "footer1": "Tsukihime - Lunar Legend",
     "footer2": "Bilibili | BV1fw8Bz8Eqy | opus/1095733813253767185",
     "feedback": "📝 Feedback",
-    "update_info": "✨ Updated October 4, 2025 ✨",
+    "update_info": "✨ Loading Update Logs... ✨",
     "loading_text": "Maiden praying...",
     "page_title": "Self Introduction",
-    "language_name": "English"
+    "language_name": "English",
+    "update_logs_title": "📝 Update Logs",
+    "close_button": "Close",
+    "version_prefix": "v",
+    "update_log_prefix": "Update Logs",
+    "no_update_logs": "No update logs available",
+    "update_log_load_failed": "Failed to load update logs"
   },
   "ja": {
     "greeting": "こんにちは、はじめまして～ (◕‿◕✿)",
@@ -286,10 +304,16 @@
     "footer1": "月に寄りそう乙女の作法 桜小路ルナ",
     "footer2": "Bilibili | BV1fw8Bz8Eqy | opus/1095733813253767185",
     "feedback": "📝 フィードバック",
-    "update_info": "✨ 2025年10月4日更新 ✨",
+    "update_info": "✨ 最新の更新履歴を読み込んでいます... ✨",
     "loading_text": "祈りを込めて…",
     "page_title": "自己紹介",
-    "language_name": "日本語"
+    "language_name": "日本語",
+    "update_logs_title": "📝 更新履歴",
+    "close_button": "閉じる",
+    "version_prefix": "v",
+    "update_log_prefix": "更新履歴",
+    "no_update_logs": "更新履歴はありません",
+    "update_log_load_failed": "更新履歴の読み込みに失敗しました"
   },
   "ko": {
     "greeting": "안녕하세요, 처음 뵙겠습니다～ (◕‿◕✿)",
@@ -359,9 +383,15 @@
     "footer1": "달에 기대는 소녀의 예의  사쿠라코지 루나",
     "footer2": "Bilibili | BV1fw8Bz8Eqy | opus/1095733813253767185",
     "feedback": "📝 피드백",
-    "update_info": "✨ 2025년 10월 4일 업데이트 ✨",
+    "update_info": "✨ 최근 업데이트 로그를 불러오는 중... ✨",
     "loading_text": "소녀의 기도…",
     "page_title": "자기소개 (한국어)",
-    "language_name": "한국어"
+    "language_name": "한국어",
+    "update_logs_title": "📝 업데이트 로그",
+    "close_button": "닫기",
+    "version_prefix": "v",
+    "update_log_prefix": "업데이트 로그",
+    "no_update_logs": "업데이트 로그가 없습니다",
+    "update_log_load_failed": "업데이트 로그를 로드하지 못했습니다"
   }
 }
