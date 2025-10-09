@@ -193,8 +193,8 @@ class UpdateLogsManager {
             overflow-x: hidden; /* 禁止横向滚动 */
             overflow-y: auto; /* 允许垂直滚动 */
             background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px) saturate(140%);
-            -webkit-backdrop-filter: blur(15px) saturate(140%);
+            backdrop-filter: blur(2px) saturate(120%);
+            -webkit-backdrop-filter: blur(2px) saturate(120%);
             box-shadow: 
                 inset 0 0 0 1px rgba(255, 255, 255, 0.25),
                 0 8px 32px rgba(0, 0, 0, 0.15),
