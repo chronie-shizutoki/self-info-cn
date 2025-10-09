@@ -80,11 +80,25 @@ class UpdateLogsManager {
             this.updateLogDisplay();
             
             // 关闭已打开的日志模态框，以便下次打开时使用新的语言
-            const openModal = document.querySelector('[id^="update-log-modal-"]');
-            if (openModal && openModal.parentNode) {
-                const modal = openModal.closest('div[id^="update-log-modal-"]') || openModal.parentNode;
-                if (modal && document.body.contains(modal)) {
-                    document.body.removeChild(modal);
+            const openModalOverlay = document.querySelector('[id^="modal-overlay-"]');
+            if (openModalOverlay && document.body.contains(openModalOverlay)) {
+                // 查找内容元素
+                const modalContent = openModalOverlay.querySelector('[id^="update-log-modal-"]');
+                if (modalContent) {
+                    // 触发关闭动画
+                    openModalOverlay.style.opacity = '0';
+                    modalContent.style.transform = 'scale(0.9)';
+                    modalContent.style.opacity = '0';
+                    
+                    // 动画完成后移除DOM元素
+                    setTimeout(() => {
+                        if (openModalOverlay && document.body.contains(openModalOverlay)) {
+                            document.body.removeChild(openModalOverlay);
+                        }
+                    }, 300);
+                } else {
+                    // 如果没有找到内容元素，直接移除
+                    document.body.removeChild(openModalOverlay);
                 }
             }
         }, 50);
@@ -168,6 +182,7 @@ class UpdateLogsManager {
         
         // 创建日志显示模态框
         const modal = document.createElement('div');
+        // 添加初始状态为不可见
         modal.style.cssText = `
             position: fixed;
             top: 0;
@@ -180,10 +195,13 @@ class UpdateLogsManager {
             align-items: center;
             z-index: 2000;
             padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         `;
         
         // 创建模态框内容
         const modalContent = document.createElement('div');
+        // 添加初始状态为缩放和不可见
         modalContent.style.cssText = `
             position: relative;
             border-radius: 24px;
@@ -199,7 +217,7 @@ class UpdateLogsManager {
                 inset 0 0 0 1px rgba(255, 255, 255, 0.25),
                 0 8px 32px rgba(0, 0, 0, 0.15),
                 0 0 0 1px rgba(255, 255, 255, 0.08);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             /* 自定义滚动条 */
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.1);
@@ -207,11 +225,14 @@ class UpdateLogsManager {
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            transform: scale(0.9);
+            opacity: 0;
         `;
         
         // 创建一个唯一的ID用于样式选择器
         const uniqueId = 'update-log-modal-' + Date.now();
         modalContent.id = uniqueId;
+        modal.id = 'modal-overlay-' + uniqueId;
         
         // 创建样式元素来添加Webkit滚动条样式
         const style = document.createElement('style');
@@ -393,14 +414,31 @@ class UpdateLogsManager {
             height: 36px;
         `;
         
+        // 添加动画关闭方法
+        const closeModal = () => {
+            if (!modal || !document.body.contains(modal)) return;
+            
+            // 触发关闭动画
+            modal.style.opacity = '0';
+            modalContent.style.transform = 'scale(0.9)';
+            modalContent.style.opacity = '0';
+            
+            // 动画完成后移除DOM元素
+            setTimeout(() => {
+                if (modal && document.body.contains(modal)) {
+                    document.body.removeChild(modal);
+                }
+                // 移除样式
+                if (style && style.parentNode) {
+                    style.parentNode.removeChild(style);
+                }
+            }, 300);
+        };
+        
         // 使用更高效的事件处理
         closeButton.addEventListener('mouseover', () => closeButton.style.backgroundColor = '#ee5253');
         closeButton.addEventListener('mouseout', () => closeButton.style.backgroundColor = '#ff6b6b');
-        closeButton.addEventListener('click', () => {
-            if (modal && document.body.contains(modal)) {
-                document.body.removeChild(modal);
-            }
-        });
+        closeButton.addEventListener('click', closeModal);
         
         // 组装模态框内容
         contentContainer.appendChild(title);
@@ -411,8 +449,8 @@ class UpdateLogsManager {
         
         // 点击模态框外部关闭
         modal.addEventListener('click', (e) => {
-            if (e.target === modal && document.body.contains(modal)) {
-                document.body.removeChild(modal);
+            if (e.target === modal) {
+                closeModal();
             }
         });
         
@@ -422,6 +460,13 @@ class UpdateLogsManager {
         // 一次性添加到文档中以减少重排
         requestAnimationFrame(() => {
             document.body.appendChild(fragment);
+            
+            // 触发动画，需要在DOM更新后执行
+            requestAnimationFrame(() => {
+                modal.style.opacity = '1';
+                modalContent.style.transform = 'scale(1)';
+                modalContent.style.opacity = '1';
+            });
         });
     }
 }

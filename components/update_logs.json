@@ -7,7 +7,8 @@
         "log_change_use_cdn_for_assets",
         "log_change_optimize_loading_speed",
         "log_change_fix_font_loading_time",
-        "log_change_avoid_network_blocking"
+        "log_change_avoid_network_blocking",
+        "log_change_add_animation"
       ]
     },
     {
@@ -82,7 +83,8 @@
       "log_change_use_cdn_for_assets": "使用中国大陆境内CDN来代替内置字体和背景图片文件",
       "log_change_optimize_loading_speed": "显著优化了加载速度",
       "log_change_fix_font_loading_time": "解决字体文件可能在某些情况下会加载长达10分钟的问题",
-      "log_change_avoid_network_blocking": "避免了可能存在的网络请求堵塞问题导致的其他重要资源未载入可能导致的错误"
+      "log_change_avoid_network_blocking": "避免了可能存在的网络请求堵塞问题导致的其他重要资源未载入可能导致的错误",
+      "log_change_add_animation": "添加了一些组件的打开关闭动画效果"
     },
     "zh-TW": {
       "log_change_update_logs": "新增更新日誌",
@@ -99,7 +101,8 @@
       "log_change_use_cdn_for_assets": "使用中國大陸CDN加速內建字型與背景圖片載入",
       "log_change_optimize_loading_speed": "大幅提升載入速度",
       "log_change_fix_font_loading_time": "修復字型檔案在某些情況下可能需耗時10分鐘載入的問題",
-      "log_change_avoid_network_blocking": "避免因網路請求阻塞導致重要資源無法載入的錯誤"
+      "log_change_avoid_network_blocking": "避免因網路請求阻塞導致重要資源無法載入的錯誤",
+      "log_change_add_animation": "添加了一些組件的打開關閉動畫效果"
     },
     "en": {
       "log_change_update_logs": "Added update logs",
@@ -116,7 +119,8 @@
       "log_change_use_cdn_for_assets": "Using Mainland China CDN for built-in fonts and background images",
       "log_change_optimize_loading_speed": "Significantly improved loading speed",
       "log_change_fix_font_loading_time": "Fixed font loading issue that could take up to 10 minutes in some cases",
-      "log_change_avoid_network_blocking": "Prevented errors caused by network request blocking important resources"
+      "log_change_avoid_network_blocking": "Prevented errors caused by network request blocking important resources",
+      "log_change_add_animation": "Added animation effects for some components"
     },
     "ja": {
       "log_change_update_logs": "アップデートログを追加",
@@ -133,7 +137,8 @@
       "log_change_use_cdn_for_assets": "中国本土CDNを使用して組み込みフォントと背景画像を加速読み込み",
       "log_change_optimize_loading_speed": "読み込み速度を大幅に向上",
       "log_change_fix_font_loading_time": "特定状況で10分間もかかるフォント読み込み問題を修正",
-      "log_change_avoid_network_blocking": "ネットワーク要求の混雑による重要リソース読み込み失敗エラーを防止"
+      "log_change_avoid_network_blocking": "ネットワーク要求の混雑による重要リソースの読み込み失敗エラーを防止",
+      "log_change_add_animation": "一部コンポーネントのオープン/クローズアニメーション効果を追加"
     },
     "ko": {
       "log_change_update_logs": "업데이트 로그 추가",
@@ -150,7 +155,8 @@
       "log_change_use_cdn_for_assets": "중국 본토 CDN 사용하여 내장 폰트 및 배경 이미지 가속 로딩",
       "log_change_optimize_loading_speed": "로딩 속도 대폭 향상",
       "log_change_fix_font_loading_time": "특정 상황에서 10분까지 소요될 수 있는 폰트 로딩 문제 해결",
-      "log_change_avoid_network_blocking": "네트워크 요청 블로킹으로 인한 중요 리소스 로드 실패 오류 방지"
+      "log_change_avoid_network_blocking": "네트워크 요청 블로킹으로 인한 중요 리소스의 로드 실패 오류 방지",
+      "log_change_add_animation": "일부 컴포넌트의 오픈/클로즈 애니메이션 효과 추가"
     }
   }
 }

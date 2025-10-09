@@ -90,11 +90,17 @@ class I18nManager {
         dropdownMenu.style.background = 'rgba(255, 255, 255, 0.1)';
         dropdownMenu.style.backdropFilter = 'blur(10px)';
         dropdownMenu.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.15)';
-        dropdownMenu.style.display = 'none';
+        dropdownMenu.style.display = 'flex';
         dropdownMenu.style.flexDirection = 'column';
         dropdownMenu.style.minWidth = '100%';
         dropdownMenu.style.maxHeight = '300px';
         dropdownMenu.style.overflowY = 'auto';
+        // 初始样式设置，用于动画
+        dropdownMenu.style.opacity = '0';
+        dropdownMenu.style.transform = 'scale(0.95) translateY(-5px)';
+        dropdownMenu.style.visibility = 'hidden';
+        dropdownMenu.style.pointerEvents = 'none';
+        dropdownMenu.style.transition = 'opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease';
 
         // 创建语言选项
         this.supportedLanguages.forEach(langCode => {
@@ -133,7 +139,7 @@ class I18nManager {
 
                 option.addEventListener('click', () => {
                     this.changeLanguage(langCode);
-                    dropdownMenu.style.display = 'none';
+                    this.closeDropdown(dropdownMenu);
                 });
 
                 dropdownMenu.appendChild(option);
@@ -143,7 +149,11 @@ class I18nManager {
         // 切换下拉菜单显示/隐藏
         mainButton.addEventListener('click', (e) => {
             e.stopPropagation(); // 阻止冒泡，避免触发文档点击事件
-            dropdownMenu.style.display = dropdownMenu.style.display === 'none' ? 'flex' : 'none';
+            if (dropdownMenu.style.visibility === 'hidden') {
+                this.openDropdown(dropdownMenu);
+            } else {
+                this.closeDropdown(dropdownMenu);
+            }
         });
 
         // 添加到容器
@@ -154,7 +164,7 @@ class I18nManager {
 
         // 点击文档其他地方关闭菜单
         document.addEventListener('click', () => {
-            dropdownMenu.style.display = 'none';
+            this.closeDropdown(dropdownMenu);
         });
 
         // 防止点击菜单内部时关闭菜单
@@ -189,6 +199,9 @@ class I18nManager {
         // 更新下拉菜单
         const dropdownMenu = document.getElementById('language-dropdown-menu');
         if (dropdownMenu) {
+            // 先关闭下拉菜单
+            this.closeDropdown(dropdownMenu);
+            
             // 清空当前菜单
             dropdownMenu.innerHTML = '';
             
@@ -229,7 +242,7 @@ class I18nManager {
 
                     option.addEventListener('click', () => {
                         this.changeLanguage(langCode);
-                        dropdownMenu.style.display = 'none';
+                        this.closeDropdown(dropdownMenu);
                     });
 
                     dropdownMenu.appendChild(option);
@@ -391,6 +404,26 @@ class I18nManager {
             window.updateBirthdayCountdown();
         }
 }
+
+
+    // 打开下拉菜单并应用动画
+    openDropdown(dropdownMenu) {
+        dropdownMenu.style.visibility = 'visible';
+        dropdownMenu.style.opacity = '1';
+        dropdownMenu.style.transform = 'scale(1) translateY(0)';
+        dropdownMenu.style.pointerEvents = 'auto';
+    }
+
+    // 关闭下拉菜单并应用动画
+    closeDropdown(dropdownMenu) {
+        dropdownMenu.style.opacity = '0';
+        dropdownMenu.style.transform = 'scale(0.95) translateY(-5px)';
+        dropdownMenu.style.pointerEvents = 'none';
+        // 延迟设置visibility，以确保动画完成
+        setTimeout(() => {
+            dropdownMenu.style.visibility = 'hidden';
+        }, 300);
+    }
 }
 
 // 创建全局的i18n实例
