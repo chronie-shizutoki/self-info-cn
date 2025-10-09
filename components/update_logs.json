@@ -4,6 +4,7 @@
       "date": "2025-10-09",
       "version": "0.3.2",
       "changes": [
+        "log_change_baidu_analytics",
         "log_change_ui_blur_transparency_adjustment"
       ]
     },
@@ -66,7 +67,8 @@
       "log_change_basic_features": "基本功能完成",
       "log_change_single_file_not_support": "停止支持单文件部署",
       "log_change_multilingual_choose": "重构了多语言选择功能",
-      "log_change_ui_blur_transparency_adjustment": "调整了UI模糊透明度"
+      "log_change_ui_blur_transparency_adjustment": "调整了UI模糊透明度",
+      "log_change_baidu_analytics": "添加了百度分析"
     },
     "zh-TW": {
       "log_change_update_logs": "添加了更新日志",
@@ -78,7 +80,8 @@
       "log_change_basic_features": "基本功能完成",
       "log_change_single_file_not_support": "停止支持單文件部署",
       "log_change_multilingual_choose": "重構了多語言選擇功能",
-      "log_change_ui_blur_transparency_adjustment": "調整了UI模糊透明度"
+      "log_change_ui_blur_transparency_adjustment": "調整了UI模糊透明度",
+      "log_change_baidu_analytics": "添加了百度分析"
     },
     "en": {
       "log_change_update_logs": "Added update logs",
@@ -90,7 +93,8 @@
       "log_change_basic_features": "Basic features completed",
       "log_change_single_file_not_support": "Single file deployment is no longer supported",
       "log_change_multilingual_choose": "Refactored multilingual choose feature",
-      "log_change_ui_blur_transparency_adjustment": "Adjusted UI blur transparency"
+      "log_change_ui_blur_transparency_adjustment": "Adjusted UI blur transparency",
+      "log_change_baidu_analytics": "Added Baidu Analytics"
     },
     "ja": {
       "log_change_update_logs": "アップデートログを追加しました",
@@ -102,7 +106,8 @@
       "log_change_basic_features": "基本機能が完成",
       "log_change_single_file_not_support": "単一ファイルデプロイメントはもうサポートされていません",
       "log_change_multilingual_choose": "多言語選択機能を再構築しました",
-      "log_change_ui_blur_transparency_adjustment": "UIのぼかし透明度を調整しました"
+      "log_change_ui_blur_transparency_adjustment": "UIのぼかし透明度を調整しました",
+      "log_change_baidu_analytics": "バイディアーナメントを追加しました"
     },
     "ko": {
       "log_change_update_logs": "업데이트 로그를 추가했습니다",
@@ -114,7 +119,8 @@
       "log_change_basic_features": "기본 기능이 완료되었습니다",
       "log_change_single_file_not_support": "단일 파일 배포는 더 이상 지원되지 않습니다",
       "log_change_multilingual_choose": "다국어 선택 기능을 재구축했습니다",
-      "log_change_ui_blur_transparency_adjustment": "UI의 흐림 투명도를 조정했습니다"
+      "log_change_ui_blur_transparency_adjustment": "UI의 흐림 투명도를 조정했습니다",
+      "log_change_baidu_analytics": "구글 애널리틱스를 추가했습니다"
     }
   }
 }
