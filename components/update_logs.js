@@ -18,7 +18,7 @@ class UpdateLogsManager {
             
             const response = await fetch('components/update_logs.json', { 
                 signal: controller.signal, 
-                cache: 'force-cache' // 使用缓存提高性能
+                cache: 'no-cache' // 检查服务器是否有更新版本
             });
             clearTimeout(timeoutId);
             

@@ -1,6 +1,16 @@
 {
   "logs": [
     {
+      "date": "2025-10-10",
+      "version": "0.3.2.1",
+      "changes": [
+        "log_change_use_cdn_for_assets",
+        "log_change_optimize_loading_speed",
+        "log_change_fix_font_loading_time",
+        "log_change_avoid_network_blocking"
+      ]
+    },
+    {
       "date": "2025-10-09",
       "version": "0.3.2",
       "changes": [
@@ -68,59 +78,79 @@
       "log_change_single_file_not_support": "停止支持单文件部署",
       "log_change_multilingual_choose": "重构了多语言选择功能",
       "log_change_ui_blur_transparency_adjustment": "调整了UI模糊透明度",
-      "log_change_baidu_analytics": "添加了百度分析"
+      "log_change_baidu_analytics": "添加了百度分析，添加网站的访问统计和用户分析能力",
+      "log_change_use_cdn_for_assets": "使用中国大陆境内CDN来代替内置字体和背景图片文件",
+      "log_change_optimize_loading_speed": "显著优化了加载速度",
+      "log_change_fix_font_loading_time": "解决字体文件可能在某些情况下会加载长达10分钟的问题",
+      "log_change_avoid_network_blocking": "避免了可能存在的网络请求堵塞问题导致的其他重要资源未载入可能导致的错误"
     },
     "zh-TW": {
-      "log_change_update_logs": "添加了更新日志",
-      "log_change_multilingual_support": "實現了多語言切換（由AI提供：繁體中文，日語，韓語，英語）",
-      "log_change_feedback_feature": "添加了反饋功能",
-      "log_change_minor_improvements": "一些微小改進",
-      "log_change_fix_issues": "修復了已知問題",
-      "log_change_site_launch": "網站首次上線",
-      "log_change_basic_features": "基本功能完成",
-      "log_change_single_file_not_support": "停止支持單文件部署",
-      "log_change_multilingual_choose": "重構了多語言選擇功能",
-      "log_change_ui_blur_transparency_adjustment": "調整了UI模糊透明度",
-      "log_change_baidu_analytics": "添加了百度分析"
+      "log_change_update_logs": "新增更新日誌",
+      "log_change_multilingual_support": "實現多語言切換功能（由AI提供：繁體中文、日語、韓語、英語）",
+      "log_change_feedback_feature": "新增意見回饋功能",
+      "log_change_minor_improvements": "細節優化與改進",
+      "log_change_fix_issues": "修復已知問題",
+      "log_change_site_launch": "網站正式上線",
+      "log_change_basic_features": "基礎功能開發完成",
+      "log_change_single_file_not_support": "不再支援單檔案部署",
+      "log_change_multilingual_choose": "重構多語言選擇功能",
+      "log_change_ui_blur_transparency_adjustment": "調整介面模糊透明度",
+      "log_change_baidu_analytics": "新增百度統計分析，強化網站訪問統計與用戶分析能力",
+      "log_change_use_cdn_for_assets": "使用中國大陸CDN加速內建字型與背景圖片載入",
+      "log_change_optimize_loading_speed": "大幅提升載入速度",
+      "log_change_fix_font_loading_time": "修復字型檔案在某些情況下可能需耗時10分鐘載入的問題",
+      "log_change_avoid_network_blocking": "避免因網路請求阻塞導致重要資源無法載入的錯誤"
     },
     "en": {
       "log_change_update_logs": "Added update logs",
-      "log_change_multilingual_support": "Implemented multilingual support (provided by AI: Traditional Chinese, Japanese, Korean, English)",
+      "log_change_multilingual_support": "Implemented multilingual switching (AI-powered: Traditional Chinese, Japanese, Korean, English)",
       "log_change_feedback_feature": "Added feedback feature",
-      "log_change_minor_improvements": "Some minor improvements",
+      "log_change_minor_improvements": "Minor improvements and optimizations",
       "log_change_fix_issues": "Fixed known issues",
-      "log_change_site_launch": "Website first launched",
+      "log_change_site_launch": "Website officially launched",
       "log_change_basic_features": "Basic features completed",
-      "log_change_single_file_not_support": "Single file deployment is no longer supported",
-      "log_change_multilingual_choose": "Refactored multilingual choose feature",
+      "log_change_single_file_not_support": "Single file deployment no longer supported",
+      "log_change_multilingual_choose": "Refactored language selection feature",
       "log_change_ui_blur_transparency_adjustment": "Adjusted UI blur transparency",
-      "log_change_baidu_analytics": "Added Baidu Analytics"
+      "log_change_baidu_analytics": "Added Baidu Analytics for website traffic statistics and user analysis",
+      "log_change_use_cdn_for_assets": "Using Mainland China CDN for built-in fonts and background images",
+      "log_change_optimize_loading_speed": "Significantly improved loading speed",
+      "log_change_fix_font_loading_time": "Fixed font loading issue that could take up to 10 minutes in some cases",
+      "log_change_avoid_network_blocking": "Prevented errors caused by network request blocking important resources"
     },
     "ja": {
-      "log_change_update_logs": "アップデートログを追加しました",
-      "log_change_multilingual_support": "多言語切り替えを実装しました（AI提供：繁体中国語、日本語、韓国語、英語）",
-      "log_change_feedback_feature": "フィードバック機能を追加しました",
-      "log_change_minor_improvements": "いくつかの小さな改善",
-      "log_change_fix_issues": "既知の問題を修正しました",
-      "log_change_site_launch": "ウェブサイトを初めて公開",
-      "log_change_basic_features": "基本機能が完成",
-      "log_change_single_file_not_support": "単一ファイルデプロイメントはもうサポートされていません",
-      "log_change_multilingual_choose": "多言語選択機能を再構築しました",
-      "log_change_ui_blur_transparency_adjustment": "UIのぼかし透明度を調整しました",
-      "log_change_baidu_analytics": "バイディアーナメントを追加しました"
+      "log_change_update_logs": "アップデートログを追加",
+      "log_change_multilingual_support": "多言語切替機能を実装（AI提供：繁体字中国語、日本語、韓国語、英語）",
+      "log_change_feedback_feature": "フィードバック機能を追加",
+      "log_change_minor_improvements": "細かい改善と最適化",
+      "log_change_fix_issues": "既知の問題を修正",
+      "log_change_site_launch": "ウェブサイト正式公開",
+      "log_change_basic_features": "基本機能の開発完了",
+      "log_change_single_file_not_support": "単一ファイルデプロイをサポート終了",
+      "log_change_multilingual_choose": "言語選択機能をリファクタリング",
+      "log_change_ui_blur_transparency_adjustment": "UIのぼかし透明度を調整",
+      "log_change_baidu_analytics": "百度統計分析を追加、サイト訪問統計とユーザー分析機能を強化",
+      "log_change_use_cdn_for_assets": "中国本土CDNを使用して組み込みフォントと背景画像を加速読み込み",
+      "log_change_optimize_loading_speed": "読み込み速度を大幅に向上",
+      "log_change_fix_font_loading_time": "特定状況で10分間もかかるフォント読み込み問題を修正",
+      "log_change_avoid_network_blocking": "ネットワーク要求の混雑による重要リソース読み込み失敗エラーを防止"
     },
     "ko": {
-      "log_change_update_logs": "업데이트 로그를 추가했습니다",
-      "log_change_multilingual_support": "다국어 전환을 구현했습니다(AI 제공: 번체 중국어, 일본어, 한국어, 영어)",
-      "log_change_feedback_feature": "피드백 기능을 추가했습니다",
-      "log_change_minor_improvements": "일부 사소한 개선사항",
-      "log_change_fix_issues": "알려진 문제를 수정했습니다",
-      "log_change_site_launch": "웹사이트가 처음 출시되었습니다",
-      "log_change_basic_features": "기본 기능이 완료되었습니다",
-      "log_change_single_file_not_support": "단일 파일 배포는 더 이상 지원되지 않습니다",
-      "log_change_multilingual_choose": "다국어 선택 기능을 재구축했습니다",
-      "log_change_ui_blur_transparency_adjustment": "UI의 흐림 투명도를 조정했습니다",
-      "log_change_baidu_analytics": "구글 애널리틱스를 추가했습니다"
+      "log_change_update_logs": "업데이트 로그 추가",
+      "log_change_multilingual_support": "다국어 전환 기능 구현 (AI 제공: 번체 중국어, 일본어, 한국어, 영어)",
+      "log_change_feedback_feature": "피드백 기능 추가",
+      "log_change_minor_improvements": "세부 사항 개선 및 최적화",
+      "log_change_fix_issues": "알려진 문제 수정",
+      "log_change_site_launch": "웹사이트 정식 출시",
+      "log_change_basic_features": "기본 기능 개발 완료",
+      "log_change_single_file_not_support": "단일 파일 배포 지원 중단",
+      "log_change_multilingual_choose": "언어 선택 기능 리팩토링",
+      "log_change_ui_blur_transparency_adjustment": "UI 블러 투명도 조정",
+      "log_change_baidu_analytics": "바이두 애널리틱스 추가, 웹사이트 방문 통계 및 사용자 분석 기능 강화",
+      "log_change_use_cdn_for_assets": "중국 본토 CDN 사용하여 내장 폰트 및 배경 이미지 가속 로딩",
+      "log_change_optimize_loading_speed": "로딩 속도 대폭 향상",
+      "log_change_fix_font_loading_time": "특정 상황에서 10분까지 소요될 수 있는 폰트 로딩 문제 해결",
+      "log_change_avoid_network_blocking": "네트워크 요청 블로킹으로 인한 중요 리소스 로드 실패 오류 방지"
     }
   }
 }
