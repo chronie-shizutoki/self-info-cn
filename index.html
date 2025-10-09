@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>自介 (中国大陆)</title>
+        <script>
+        // 百度分析
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?b692ab2b12e6253b1f0cb7c33556996d";
+            var s = document.getElementsByTagName("script")[0];
+            if (s) {
+                s.parentNode.insertBefore(hm, s);
+                console.log("百度分析已加载成功");
+            } else {
+                console.error("未找到脚本元素，百度分析加载失败");
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="components/splash-screen.css">
     <link rel="stylesheet" href="components/style.css">
     <link rel="stylesheet" href="components/liquid-glass-block.css">
     <link rel="stylesheet" href="components/birthday.css">
     <script src="components/i18n.js" defer></script>
-    <script>
-        // 百度分析
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-                hm.src = "https://hm.baidu.com/hm.js?b692ab2b12e6253b1f0cb7c33556996d";
-            var s = document.getElementsByTagName("script")[0]; 
-                s.parentNode.insertBefore(hm, s);
-        })();
-        console.log("百度分析已加载成功");
-    </script>
 
 </head>
     <div id="loading-screen" class="splash-screen hidden">
