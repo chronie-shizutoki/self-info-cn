@@ -207,6 +207,7 @@ class UpdateLogsManager {
             border-radius: 24px;
             padding: 25px;
             max-width: 600px;
+            max-width: 75%;
             max-height: 80vh;
             overflow-x: hidden; /* 禁止横向滚动 */
             overflow-y: auto; /* 允许垂直滚动 */
