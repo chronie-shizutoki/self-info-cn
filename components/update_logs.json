@@ -5,7 +5,8 @@
       "version": "0.3.4",
       "changes": [
         "log_change_seo_optimization",
-        "log_change_icon_update"
+        "log_change_icon_update",
+        "log_change_use_cdn_for_assets"
       ]
     },
     {
