@@ -1,6 +1,13 @@
 {
   "logs": [
     {
+      "date": "2025-12-09",
+      "version": "0.3.5",
+      "changes": [
+        "log_change_fix_issues"
+      ]
+    },
+    {
       "date": "2025-11-10",
       "version": "0.3.4",
       "changes": [

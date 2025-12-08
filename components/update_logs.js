@@ -121,17 +121,17 @@ class UpdateLogsManager {
                 return;
             }
             
-            // 格式化日期显示
-            const formattedDate = this.formatDate(latestLog.date);
+            // 格式化日期显示（使用简单日期格式）
+            const formattedDate = this.formatDateLite(latestLog.date);
             
             // 如果有i18n，尝试获取翻译后的格式
-            let displayText = `✨ ${formattedDate} | v${latestLog.version} ✨`;
+            let displayText = `✨<img src="../pic/update.svg" alt="update" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> ${formattedDate} | 🔥0.04k+ | <img src="../pic/changelog.svg" alt="changelog" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> v.${latestLog.version} ✨`;
             if (window.i18n) {
-                displayText = `✨ ${formattedDate} | v${latestLog.version} ✨`;
+                displayText = `✨<img src="../pic/update.svg" alt="update" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> ${formattedDate} | 🔥0.04k+ | <img src="../pic/changelog.svg" alt="changelog" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> v.${latestLog.version} ✨`;
             }
             
             // 更新显示文本
-            updateInfoElement.textContent = displayText;
+            updateInfoElement.innerHTML = displayText;
             
             // 添加点击事件以显示完整日志
             updateInfoElement.onclick = () => this.showFullLogs();
@@ -166,7 +166,19 @@ class UpdateLogsManager {
                 return `${year}년 ${month}월 ${day}일`;
             } else {
                 // 默认使用英文格式
-                return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                const day = date.getDate();
+                const suffix = (d => {
+                    if (d > 3 && d < 21) return 'th';
+                    switch (d % 10) {
+                        case 1: return 'st';
+                        case 2: return 'nd';
+                        case 3: return 'rd';
+                        default: return 'th';
+                    }
+                })(day);
+                const month = date.toLocaleString('en-US', { month: 'long' });
+                const year = date.getFullYear();
+                return `${month} ${day}${suffix}, ${year}`;
             }
         }
         // 默认格式（中文）
@@ -174,6 +186,26 @@ class UpdateLogsManager {
         const month = date.getMonth() + 1;
         const day = date.getDate();
         return `${year}年${month}月${day}日`;
+    }
+
+        formatDateLite(dateString) {
+        const date = new Date(dateString);
+        // 如果有i18n，根据当前语言设置日期格式
+        if (window.i18n && window.i18n.currentLanguage) {
+            const lang = window.i18n.currentLanguage;
+            if (lang === 'zh-CN' || lang === 'zh-TW' || lang === 'ja' || lang === 'ko') {
+                const month = date.getMonth() + 1;
+                const day = date.getDate();
+                return ` ${month}/ ${day}`;
+            } else {
+                // 默认使用英文格式
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            }
+        }
+        // 默认格式（中文）
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        return `${month}/${day}`;
     }
 
     showFullLogs() {
