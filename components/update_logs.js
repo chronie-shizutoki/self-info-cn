@@ -31,8 +31,7 @@ class UpdateLogsManager {
                 'zh-CN': {},
                 'zh-TW': {},
                 'en': {},
-                'ja': {},
-                'ko': {}
+                'ja': {}
             };
             
             // 监听语言切换事件
@@ -125,9 +124,9 @@ class UpdateLogsManager {
             const formattedDate = this.formatDateLite(latestLog.date);
             
             // 如果有i18n，尝试获取翻译后的格式
-            let displayText = `✨<img src="../pic/update.svg" alt="update" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> ${formattedDate} | 🔥0.04k+ | <img src="../pic/changelog.svg" alt="changelog" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> v.${latestLog.version} ✨`;
+            let displayText = `✨<img src="../pic/update.svg" alt="update" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> ${formattedDate} | <img src="../pic/changelog.svg" alt="changelog" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> v.${latestLog.version} ✨`;
             if (window.i18n) {
-                displayText = `✨<img src="../pic/update.svg" alt="update" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> ${formattedDate} | 🔥0.04k+ | <img src="../pic/changelog.svg" alt="changelog" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> v.${latestLog.version} ✨`;
+                displayText = `✨<img src="../pic/update.svg" alt="update" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> ${formattedDate} | <img src="../pic/changelog.svg" alt="changelog" class="icon" style="width: 16px; height: 16px; vertical-align: middle;"> v.${latestLog.version} ✨`;
             }
             
             // 更新显示文本
@@ -159,11 +158,6 @@ class UpdateLogsManager {
                 const month = date.getMonth() + 1;
                 const day = date.getDate();
                 return `${year}年${month}月${day}日`;
-            } else if (lang === 'ko') {
-                const year = date.getFullYear();
-                const month = date.getMonth() + 1;
-                const day = date.getDate();
-                return `${year}년 ${month}월 ${day}일`;
             } else {
                 // 默认使用英文格式
                 const day = date.getDate();
@@ -193,10 +187,10 @@ class UpdateLogsManager {
         // 如果有i18n，根据当前语言设置日期格式
         if (window.i18n && window.i18n.currentLanguage) {
             const lang = window.i18n.currentLanguage;
-            if (lang === 'zh-CN' || lang === 'zh-TW' || lang === 'ja' || lang === 'ko') {
+            if (lang === 'zh-CN' || lang === 'zh-TW' || lang === 'ja') {
                 const month = date.getMonth() + 1;
                 const day = date.getDate();
-                return ` ${month}/ ${day}`;
+                return ` ${month}/${day}`;
             } else {
                 // 默认使用英文格式
                 return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });

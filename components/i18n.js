@@ -2,7 +2,7 @@ class I18nManager {
     constructor() {
         this.languages = {};
         this.currentLanguage = 'zh-CN';
-        this.supportedLanguages = ['zh-CN', 'zh-TW', 'en', 'ja', 'ko'];
+        this.supportedLanguages = ['zh-CN', 'zh-TW', 'en', 'ja'];
         this.defaultLanguage = 'zh-CN';
         this.init();
     }
@@ -74,7 +74,7 @@ class I18nManager {
 
         // 添加下拉箭头
         const arrow = document.createElement('span');
-        arrow.textContent = ' ▼';
+        arrow.innerHTML = '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
         arrow.style.marginLeft = '5px';
         mainButton.appendChild(arrow);
 
@@ -191,7 +191,7 @@ class I18nManager {
             mainButton.textContent = this.languages[this.currentLanguage]?.language_name || this.currentLanguage;
             // 重新添加下拉箭头
             const arrow = document.createElement('span');
-            arrow.textContent = ' ▼';
+            arrow.innerHTML = '<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
             arrow.style.marginLeft = '5px';
             mainButton.appendChild(arrow);
         }
